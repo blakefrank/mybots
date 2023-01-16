@@ -14,6 +14,12 @@ class MOTOR:
         
     def Prepare_To_Act(self):
         for jointName in pyrosim.jointNamesToIndices:
+            print("-------JointName----------")
+            print(jointName)
+            if self.jointName == b'Torso_BackLeg':
+                self.frequency = c.frequency
+            else:
+                self.frequency = c.frequency/2
             self.motorValues = self.amplitude * numpy.sin(self.frequency * numpy.linspace(0, 2 * numpy.pi, c.simulation_length) + self.offset)
 
 

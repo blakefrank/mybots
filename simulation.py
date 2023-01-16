@@ -5,6 +5,7 @@ import pybullet_data
 import pyrosim.pyrosim as pyrosim
 import constants as c
 import time
+import numpy
 class SIMULATION:
     def __init__(self):
         self.world = WORLD()
@@ -20,8 +21,12 @@ class SIMULATION:
             self.robot.Act(i)
             p.stepSimulation()
             time.sleep(1/60)
-            print(i)
-
+            #print(i)
+    def Save_Values(self):
+        for linkName, sensor in self.robot.sensors.items():
+            numpy.save("data/{}SensorValues.npy".format(linkName), sensor.values)
+        for jointName, motor in self.robot.motors.items():
+            numpy.save("data/{}MotorValues.npy".format(jointName), motor.motorValues)
     def __del__(self):
         p.disconnect()
         
