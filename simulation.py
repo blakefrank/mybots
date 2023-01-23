@@ -26,11 +26,11 @@ class SIMULATION:
             time.sleep(1/60)
             #print(i)
 
-    def Save_Values(self):
-        for linkName, sensor in self.robot.sensors.items():
-            numpy.save("data/{}SensorValues.npy".format(linkName), sensor.values)
-        for jointName, motor in self.robot.motors.items():
-            numpy.save("data/{}MotorValues.npy".format(jointName), motor.motorValues)
+    # def Save_Values(self):
+    #     for linkName, sensor in self.robot.sensors.items():
+    #         numpy.save("data/{}SensorValues.npy".format(linkName), sensor.values)
+    #     for jointName, motor in self.robot.motors.items():
+    #         numpy.save("data/{}MotorValues.npy".format(jointName), motor.motorValues)
 
     def __del__(self):
         p.disconnect()
