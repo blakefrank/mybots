@@ -43,9 +43,9 @@ class SOLUTION:
         self.Create_Body()
         self.Create_World()
 
-    def evaluate(self):
+    def evaluate(self, str):
         self.Create_Brain()
-        os.system("python3 simulate.py")
+        os.system("python3 simulate.py " + str)
         fitnessFile = open("fitness.txt", "r")
         fitnessValue = float(fitnessFile.read())
         self.fitness = fitnessValue

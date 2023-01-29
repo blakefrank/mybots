@@ -8,9 +8,12 @@ import time
 import numpy
 
 class SIMULATION:
-    def __init__(self):
+    def __init__(self, directOrGUI):
         self.world = WORLD()
-        self.physicsClient = p.connect(p.GUI)
+        if directOrGUI == "DIRECT":
+            self.physicsClient = p.connect(p.DIRECT)
+        else:
+            self.physicsClient = p.connect(p.GUI)
         self.robot = ROBOT(self.physicsClient)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8)  
