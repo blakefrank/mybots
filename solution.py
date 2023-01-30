@@ -53,7 +53,7 @@ class SOLUTION:
         self.Create_World()
         self.Create_Brain()
         self.Create_Body()
-        os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " &")
+        os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " 2&>1 &")
         
     def Wait_For_Simulation_To_End(self, directOrGUI):
         while not os.path.exists("fitness" + str(self.myID) + ".txt"):
