@@ -8,12 +8,12 @@ height = 1
 
 
 class SOLUTION:
-    def __init__(self) -> None:
+    def __init__(self, ID) -> None:
         self.weights = np.random.rand(3, 2)
         self.weights = (self.weights * 2) - 1
-        
-    def Create_World(self): 
-        pyrosim.Start_NeuralNetwork("brain.nndf")
+        self.myID = ID
+    def Create_Brain(self): 
+        pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
         sensor_neurons = [0, 1, 2]
         motor_neurons = [0, 1]
         pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
@@ -39,13 +39,17 @@ class SOLUTION:
         pyrosim.Send_Cube(name="FrontLeg", pos=[.5,0, -.5] , size=[1,1,1])
         pyrosim.End()
 
-    def Create_Brain(self):
-        self.Create_Body()
-        self.Create_World()
 
-    def evaluate(self, str):
+    def Create_World(self):
+        pyrosim.Start_SDF("world.sdf")
+        pyrosim.Send_Cube(name="Box", pos=[-3,3,0.5] , size=[1,1,1])
+        pyrosim.End()
+    
+    def evaluate(self, directOrGUI):
+        self.Create_World()
+        self.Create_Body()
         self.Create_Brain()
-        os.system("python3 simulate.py " + str)
+        os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " &")
         fitnessFile = open("fitness.txt", "r")
         fitnessValue = float(fitnessFile.read())
         self.fitness = fitnessValue
@@ -56,5 +60,5 @@ class SOLUTION:
         randomColumn = random.randint(0, 1)
         self.weights[randomRow, randomColumn] = random.random() * 2 - 1
 
-
-
+    def Set_ID(self, id):
+        self.myID = id

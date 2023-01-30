@@ -4,10 +4,10 @@ import pyrosim.pyrosim as pyrosim
 from sensor import SENSOR
 from motor import MOTOR
 from pyrosim.neuralNetwork import NEURAL_NETWORK
+import os
 
 class ROBOT:
-    def __init__(self, physicsClient):
-        self.physicsClient = physicsClient
+    def __init__(self, solutionID):
         self.motors = {}
         self.sensors = {}
         self.initialpos = [0, 1, 0.5]
@@ -15,7 +15,8 @@ class ROBOT:
         pyrosim.Prepare_To_Simulate(self.robotId)
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
-        self.nn = NEURAL_NETWORK("brain.nndf")
+        self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")
+        os.system("rm brain" + str(solutionID) + ".nndf")
     def Prepare_To_Sense(self):
         self.sensors = {}
         for linkName in pyrosim.linkNamesToIndices:

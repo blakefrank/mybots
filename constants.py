@@ -6,3 +6,4 @@ phaseOffset = 0
 
 simulation_length = 500
 numberOfGenerations = 10
+populationSize = 2

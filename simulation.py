@@ -8,13 +8,14 @@ import time
 import numpy
 
 class SIMULATION:
-    def __init__(self, directOrGUI):
+    def __init__(self, directOrGUI, solutionID):
         self.world = WORLD()
+        self.dORg = directOrGUI
         if directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
         else:
             self.physicsClient = p.connect(p.GUI)
-        self.robot = ROBOT(self.physicsClient)
+        self.robot = ROBOT(solutionID)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8)  
         p.loadSDF("world.sdf")
@@ -26,7 +27,8 @@ class SIMULATION:
             self.robot.Think()
             self.robot.Act(i)
             p.stepSimulation()
-            time.sleep(1/60)
+            if self.dORg == "GUI":
+                time.sleep(1/60)
             #print(i)
 
     # def Save_Values(self):
