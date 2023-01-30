@@ -8,6 +8,7 @@ import os
 
 class ROBOT:
     def __init__(self, solutionID):
+        self.solutionID = solutionID
         self.motors = {}
         self.sensors = {}
         self.initialpos = [0, 1, 0.5]
@@ -41,8 +42,9 @@ class ROBOT:
         stateOfLinkZero = p.getLinkState(self.robotId, 0)
         positionOfLinkZero = stateOfLinkZero[0]
         xCoordinateOfLinkZero = positionOfLinkZero[0]
-        with open("fitness.txt", "w") as file:
+        with open("tmp" + str(self.solutionID) + ".txt", "w") as file:
             file.write(str(xCoordinateOfLinkZero))
+            os.system("mv tmp" + str(self.solutionID) + ".txt fitness" + str(self.solutionID) + ".txt")
 
 
 
