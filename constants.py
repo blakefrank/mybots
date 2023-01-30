@@ -4,6 +4,6 @@ amplitude = numpy.pi/4
 frequency = 10
 phaseOffset = 0
 
-simulation_length = 200
+simulation_length = 1000
 numberOfGenerations = 10
-populationSize = 2
+populationSize = 10
