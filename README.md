@@ -1,1 +1,1 @@
-# mybots
+This is a spider-like creature with an antenna. The antenna contains motor and sensors neurons. Is it trained to evolve such that the Torso reaches as high (most positive z) as it can by the end of the simulation. I added many world blocks to see if the robot could evolve to stand on them. Right now, the most evolved behavior it exhibits is using its antenna to propel itself upwards. With 1000s of simulations, it woudl be interesting to see if it would use the blocks to stand on.
