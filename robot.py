@@ -39,11 +39,10 @@ class ROBOT:
         self.nn.Update()
 
     def Get_Fitness(self):
-        stateOfLinkZero = p.getLinkState(self.robotId, 0)
-        positionOfLinkZero = stateOfLinkZero[0]
-        xCoordinateOfLinkZero = positionOfLinkZero[0]
+        position = p.getBasePositionAndOrientation(self.robotId)[0]
+        height = -1*position[2]
         with open("tmp" + str(self.solutionID) + ".txt", "w") as file:
-            file.write(str(xCoordinateOfLinkZero))
+            file.write(str(height))
             os.system("mv tmp" + str(self.solutionID) + ".txt fitness" + str(self.solutionID) + ".txt")
 
 
