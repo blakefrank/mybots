@@ -7,12 +7,12 @@ from pyrosim.neuralNetwork import NEURAL_NETWORK
 import os
 
 class ROBOT:
-    def __init__(self, solutionID):
+    def __init__(self, solutionID, populationID):
         self.solutionID = solutionID
         self.motors = {}
         self.sensors = {}
         self.initialpos = [0, 1, 0.5]
-        self.robotId = p.loadURDF("body.urdf", self.initialpos)
+        self.robotId = p.loadURDF("body" + populationID + ".urdf")
         pyrosim.Prepare_To_Simulate(self.robotId)
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
