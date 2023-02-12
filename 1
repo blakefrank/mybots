@@ -6,4 +6,12 @@ Traceback (most recent call last):
   File "/Users/blakefrank/Desktop/mybots/simulation.py", line 18, in __init__
     self.robot = ROBOT(solutionID, populationID)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: ROBOT.__init__() takes 2 positional arguments but 3 were given
+  File "/Users/blakefrank/Desktop/mybots/robot.py", line 21, in __init__
+    self.Prepare_To_Sense()
+  File "/Users/blakefrank/Desktop/mybots/robot.py", line 28, in Prepare_To_Sense
+    self.sensors[linkName] = SENSOR(linkName)
+                             ^^^^^^^^^^^^^^^^
+  File "/Users/blakefrank/Desktop/mybots/sensor.py", line 8, in __init__
+    self.values = c.amplitude * numpy.sin(c.frequency * numpy.linspace(0, 2 * numpy.pi, c.simulation_length) + c.phaseOffset)
+                                                                                        ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'constants' has no attribute 'simulation_length'

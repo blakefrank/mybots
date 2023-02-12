@@ -1,11 +1,10 @@
-import numpy as np
 import pyrosim.pyrosim as pyrosim
+import constants as c
+import numpy as np
 import random
-import os
 import time
-length = 1
-width = 1
-height = 1
+import os
+
 
 
 class SOLUTION:
@@ -49,7 +48,7 @@ class SOLUTION:
 		pyrosim.Start_URDF("body" + str(self.populationID) + ".urdf")
 
 		# Length of body
-		self.numLinks = random.randint(4,12)
+		self.numLinks = random.randint(3,12)
 		self.sensorLocs = np.random.randint(2, size=self.numLinks)
 
 		material = "Green" if self.sensorLocs[0] == 1 else "Blue"
@@ -86,12 +85,20 @@ class SOLUTION:
 
 
 	def Create_World(self):
+		length = 1
+		width = 1
+		height = 1
+
+		x = 0
+		y = 0
+		z = height/2
+
 		pyrosim.Start_SDF("world.sdf")
-		pyrosim.Send_Cube(name="Box", pos=[-3,3,0.5] , size=[1,1,1])
+
+		pyrosim.Send_Cube(name="Box", pos=[-4,4,z] , size=[length,width,height])
+
 		pyrosim.End()
 	
-	def evaluate(self, directOrGUI):
-		pass
 	
 	def Start_Simulation(self, directOrGUI):
 		self.Create_World()

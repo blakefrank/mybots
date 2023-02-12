@@ -16,6 +16,7 @@ class SIMULATION:
         else:
             self.physicsClient = p.connect(p.GUI)
         self.robot = ROBOT(solutionID, populationID)
+        
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8)  
         p.loadSDF("world.sdf")

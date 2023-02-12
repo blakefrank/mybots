@@ -8,15 +8,19 @@ import os
 
 class ROBOT:
     def __init__(self, solutionID, populationID):
+        self.robotId = p.loadURDF("body" + populationID + ".urdf")
+        self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")
         self.solutionID = solutionID
+        pyrosim.Prepare_To_Simulate(self.robotId)
+        
         self.motors = {}
         self.sensors = {}
         self.initialpos = [0, 1, 0.5]
-        self.robotId = p.loadURDF("body" + populationID + ".urdf")
-        pyrosim.Prepare_To_Simulate(self.robotId)
+        
+       
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
-        self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")
+        
         os.system("rm brain" + str(solutionID) + ".nndf")
     def Prepare_To_Sense(self):
         self.sensors = {}
