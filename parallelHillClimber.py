@@ -53,7 +53,7 @@ class PARALLEL_HILL_CLIMBER:
 		for key in self.parents:
 			print("Parent " + str(key) + ": " + str(self.parents[key].fitness) + " Child: " + str(self.children[key].fitness))
 		print("")
-	def SHOW_BEST(self):
+	def Show_Best(self):
 		bestKey = 0
 		for key in self.parents:
 			if self.parents[key].fitness < self.parents[bestKey].fitness:

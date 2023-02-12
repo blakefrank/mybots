@@ -12,7 +12,7 @@ class ROBOT:
         self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")
         self.solutionID = solutionID
         pyrosim.Prepare_To_Simulate(self.robotId)
-        
+
         self.motors = {}
         self.sensors = {}
         self.initialpos = [0, 1, 0.5]
@@ -22,6 +22,7 @@ class ROBOT:
         self.Prepare_To_Act()
         
         os.system("rm brain" + str(solutionID) + ".nndf")
+
     def Prepare_To_Sense(self):
         self.sensors = {}
         for linkName in pyrosim.linkNamesToIndices:

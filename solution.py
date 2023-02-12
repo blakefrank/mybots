@@ -102,7 +102,7 @@ class SOLUTION:
 	
 	def Start_Simulation(self, directOrGUI):
 		self.Create_World()
-		self.Create_Body()
+		self.Create_Brain()
 		# os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " " + str(self.populationID) + " 2&>1 &")
 		os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " " + str(self.populationID) + " &")
 		

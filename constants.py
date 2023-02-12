@@ -7,6 +7,7 @@ phaseOffset = np.pi/4
 numberOfGenerations = 20
 populationSize = 5
 
+simulation_length = 1000
 numSensorNeurons = 11
 numMotorNeurons = 10
 
