@@ -77,30 +77,131 @@ class MAP():
             x1 = parent_link.abs[0]
             y1 = parent_link.abs[1]
             z1 = parent_link.abs[2]
+            #calc joint positions
             if prev_face == 1:
                 if rand_face == 1:
-                    new_abs_block = np.array([x1+1, y1, z1])
-                    new_rel_block = np.array([0.5, 0, 0])
                     new_rel_joint = np.array([1, 0, 0])
                 if rand_face == 2:
                     return False
                 if rand_face == 3:
-                    new_abs_block = np.array([x1, y1+1, z1])
-                    new_rel_block = np.array([0, 0.5, 0])
                     new_rel_joint = np.array([0.5, 0.5, 0])
                 if rand_face == 4:
-                    new_abs_block = np.array([x1, y1-1, z1])
-                    new_rel_block = np.array([0, -0.5, 0])
                     new_rel_joint = np.array([0.5, -0.5, 0])
                 if rand_face == 5:
-                    new_abs_block = np.array([x1, y1, z1 +1])
-                    new_rel_block = np.array([0,0,0.5])
                     new_rel_joint = np.array([0.5, 0, 0.5])
                 if rand_face == 6:
-                    new_abs_block = np.array([x1, y1, z1 - 1])
-                    new_rel_block = np.array([0,0,0.5])
-                    new_rel_joint = np.array([0.5, 0, 0.5])
+                    new_rel_joint = np.array([0.5, 0, -0.5])
 
+            if prev_face == 2:
+                if rand_face == 1:
+                    return False
+                if rand_face == 2:
+                    new_rel_joint = np.array([-1,   0, 0])
+                if rand_face == 3:
+                    new_rel_joint = np.array([-0.5, 0.5, 0])
+                if rand_face == 4:
+                    new_rel_joint = np.array([-0.5, -0.5, 0])
+                if rand_face == 5:
+                    new_rel_joint = np.array([-0.5, 0, 0.5])
+                if rand_face == 6:
+                    new_rel_joint = np.array([-0.5, 0, -0.5])
+
+            if prev_face == 3:
+                if rand_face == 1:
+                    new_rel_joint = np.array([0.5, 0.5, 0])
+                if rand_face == 2:
+                    new_rel_joint = np.array([-0.5, 0.5, 0])
+                if rand_face == 3:
+                    new_rel_joint = np.array([0, 1,   0])
+                if rand_face == 4:
+                    return False
+                if rand_face == 5:
+                    new_rel_joint = np.array([0,  0.5, 0.5])
+                if rand_face == 6:
+                    new_rel_joint = np.array([0,  0.5, -0.5])
+
+            if prev_face == 4:
+                if rand_face == 1:
+                    new_rel_joint = np.array([0.5, -0.5, 0])
+                if rand_face == 2:
+                    new_rel_joint = np.array([-0.5, -0.5, 0])
+                if rand_face == 3:
+                    return False
+                if rand_face == 4:
+                    new_rel_joint = np.array([0,   -1,   0])
+                if rand_face == 5:
+                    new_rel_joint = np.array([0, -0.5, 0.5])
+                if rand_face == 6:
+                    new_rel_joint = np.array([0, -0.5, -0.5])
+
+            if prev_face == 5:
+                if rand_face == 1:
+                    new_rel_joint = np.array([0.5, 0, 0.5])
+                if rand_face == 2:
+                    new_rel_joint = np.array([-0.5, 0, 0.5])
+                if rand_face == 3:
+                    new_rel_joint = np.array([0,  0.5,  0.5])
+                if rand_face == 4:
+                    new_rel_joint = np.array([0, -0.5, 0.5])
+                if rand_face == 5:
+                    new_rel_joint = np.array([0,  0,    1])
+                if rand_face == 6:
+                    return False
+            
+            if prev_face == 6:
+                if rand_face == 1:
+                    new_rel_joint = np.array([0.5, 0, -0.5])
+                if rand_face == 2:
+                    new_rel_joint = np.array([-0.5, 0, -0.5])
+                if rand_face == 3:
+                    new_rel_joint = np.array([0, 0.5, -0.5])
+                if rand_face == 4:
+                    new_rel_joint = np.array([0, -0.5, -0.5])
+                if rand_face == 5:
+                    return False
+                if rand_face == 6:
+                    new_rel_joint = np.array([0, 0, -1])
+            
+            #New Link (block) position
+            if rand_face == 1:
+                new_abs_block = np.array([x1 + 1, y1, z1])
+                new_rel_block = np.array([0.5, 0,   0])
+                
+            if rand_face == 2:
+                new_abs_block = np.array([x1-1, y1, z1])
+                new_rel_block = np.array([-0.5, 0, 0])
+                
+            if rand_face == 3:
+                new_abs_block = np.array([x1, y1+1, z1])
+                new_rel_block = np.array([0, 0.5, 0])
+                
+            if rand_face == 4:
+                new_abs_block = np.array([x1, y1-1, z1])
+                new_rel_block = np.array([0, -0.5, 0])
+                
+            if rand_face == 5:
+                new_abs_block = np.array([x1, y1, z1+1])
+                new_rel_block = np.array([0,  0,   0.5])
+            
+            if rand_face == 6:
+                new_abs_block = np.array([x1, y1, z1-1])
+                new_rel_block = np.array([0, 0, -0.5])
+            #finally, need to check_pos(new_absolute_block position)
+            if not self.is_valid_position(new_abs_block):
+                return False
+            new_link = Link(rel_pos=new_rel_block, abs_pos=new_abs_block, num=len(self.list_links), prev=parent_link)
+            new_joint = Joint(num=len(self.list_joints), rel_pos=new_rel_joint, abs_pos=None, parent = parent_link, child= new_link, axis = new_joint_axis, face= rand_face)
+            return new_link, new_joint
+
+    def is_valid_position(self, new_pos):
+        for link in self.list_links:
+            abs_pos = link.abs
+            if self.dist(new_pos, abs_pos) < 1:
+                return False
+        return True
+
+    def dist(self, point1, point2):
+        return np.sqrt((point1[0]-point2[0])**2 + (point1[1]-point2[1])**2 + (point1[2]-point2[2])**2)
 
     def get_prev_face(self, parent_link):
         for joint in self.list_joints:
@@ -113,10 +214,11 @@ class MAP():
 
 
 if __name__ == '__main__':
-    map = MAP(numlinks = 2)
+    map = MAP(numlinks=20)
+    print("-------------------------links----------------------------")
     for link in map.list_links:
-        print("-------------------------links----------------------------")
-        print(link.name + "   Abs pos:   " + str(link.abs) + "   Rel pos:   " + str(link.rel))
+        print("{:<15}Abs pos: {:<25}Rel pos: {}".format(link.name, str(link.abs), str(link.rel)))
+    print("-------------------------joints----------------------------")
     for joint in map.list_joints:
-        print("-------------------------joints----------------------------")
-        print(joint.name + "   Abs pos:   " + str(joint.abs) + "   Rel pos:   " + str(joint.rel) + "       face:   " + str(joint.face))
+        print("{:<15}Abs pos: {:<25}Rel pos: {:<25}face: {}".format(joint.name, str(joint.abs), str(joint.rel), str(joint.face)))
+

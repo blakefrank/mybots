@@ -22,6 +22,7 @@ class ROBOT:
 		self.Prepare_To_Act()
 		
 		os.system("rm brain" + str(solutionID) + ".nndf")
+		
 
 	def Prepare_To_Sense(self):
 		self.sensors = {}
