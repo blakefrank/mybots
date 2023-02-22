@@ -4,6 +4,7 @@ import numpy as np
 import random
 import time
 import os
+from map import MAP
 
 
 
@@ -11,24 +12,28 @@ class SOLUTION:
 	def __init__(self, nextAvailableID, populationID):
 		self.myID = nextAvailableID
 		self.populationID = populationID
+		self.numLinks = random.randint(5,12)
+		self.map = MAP(self.numLinks)
 		self.Create_Body()
+		
 
 	def Create_Brain(self): 
 		pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
 		neuronName = 0
+		links = self.map.list_links
+		joints = self.map.list_joints
 
-		for i in range(self.numLinks):
+		for i in range(len(self.map.list_links)):
 
 			if self.sensorLocs[i] == 1:
-				linkName = "Link" + str(i+1)
+				linkName = links[i].name
 				pyrosim.Send_Sensor_Neuron(name = neuronName , linkName = linkName)
-
-				neuronName += 1
+				neuronName +=1 
 		
 		self.numSensorNeurons = neuronName
 
-		for i in range(1,self.numLinks):
-			jointName = "Link" + str(i) + "_Link" + str(i+1)
+		for i in range(len(self.map.list_joints)):
+			jointName = joints[i].name
 			pyrosim.Send_Motor_Neuron( name = neuronName , jointName = jointName)
 			neuronName += 1
 		self.weights = np.random.rand(self.numSensorNeurons, self.numLinks-1)*2 - 1
@@ -41,45 +46,40 @@ class SOLUTION:
 		pyrosim.End()
 
 	def Create_Body(self):
-		head_length = random.random() + 0.1
-		head_width = random.random() + 0.3
-		head_height = random.random() + 0.15
+		links = self.map.list_links
+		joints = self.map.list_joints
 
 		pyrosim.Start_URDF("body" + str(self.populationID) + ".urdf")
 
 		# Length of body
-		self.numLinks = random.randint(3,12)
+		
 		self.sensorLocs = np.random.randint(2, size=self.numLinks)
 
 		material = "Green" if self.sensorLocs[0] == 1 else "Blue"
 
 		# Head
-		pyrosim.Send_Cube(name="Link1", pos=[0,0,1] , size=[head_length,head_width,head_height], material = material, rgba = self.Get_rgba(material))
-
-		# Link 1
-		link_length = random.random() + 0.1
-		link_width = random.random() + 0.3
-		link_height = random.random() + 0.15
-		material = "Green" if self.sensorLocs[1] == 1 else "Blue"
-		pyrosim.Send_Joint( name = "Link1_Link2" , parent= "Link1" , child = "Link2" , type = "revolute", position = [head_length/2,0,1], jointAxis = "0 1 0")
-		pyrosim.Send_Cube(name= "Link2", pos=[link_length/2,0,0] , size=[link_length,link_width,link_height], material = material, rgba = self.Get_rgba(material))
-		
-		prevLinkLength = link_length
+		pyrosim.Send_Cube(name=links[0].name, pos=links[0].abs , size=[1,1,1], material = material, rgba = self.Get_rgba(material))
 
 		# Additional links
-		for i in range(2,self.numLinks):
-			link_length = random.random() + 0.1
-			link_width = random.random() + 0.3
-			link_height = random.random() + 0.15
+		for i in range(len(joints)):
+			curr_joint = joints[i]
+			jointName = curr_joint.name
+			parentName = curr_joint.parent.name
+			childName = curr_joint.child.name
+			childPos = curr_joint.child.rel
 
-			jointName = "Link" + str(i) + "_Link" + str(i+1)
-			parentName = "Link" + str(i)
-			childName = "Link" + str(i+1)
+			if type(curr_joint.rel) == type(None):
+				jointPos = curr_joint.abs
+			else:
+				jointPos = curr_joint.rel 
 
-			pyrosim.Send_Joint( name = jointName , parent= parentName , child = childName , type = "revolute", position = [prevLinkLength,0,0], jointAxis = "0 1 0")
+			assert(type(jointPos) != type(None))
+			jointAxis = curr_joint.axis
+			assert(type(jointAxis) == type(str()))
+
+			pyrosim.Send_Joint( name = jointName , parent= parentName , child = childName , type = "revolute", position = jointPos, jointAxis = jointAxis)
 			material = "Green" if self.sensorLocs[i] == 1 else "Blue"
-			pyrosim.Send_Cube(name= childName, pos=[link_length/2,0,0] , size=[link_length,link_width,link_height], material = material, rgba = self.Get_rgba(material))
-			prevLinkLength = link_length
+			pyrosim.Send_Cube(name= childName, pos=childPos, size=[1,1,1], material = material, rgba = self.Get_rgba(material))
 
 		pyrosim.End()
 
