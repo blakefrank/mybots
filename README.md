@@ -3,21 +3,21 @@
 <img width="842" alt="Screen Shot 2023-02-21 at 7 34 11 PM" src="https://user-images.githubusercontent.com/86979153/220498078-baafafa7-b00a-4806-9945-9c3ac0f29256.png">
 
 
-This 3d-morphologies project is an extension of the 1-d phase. I implemented an entire new class called MAP(), which essentially generates a pyrosim layout completely independent of pyrosim, connecting a bunch of blocks such that none intersect and all other rules of pyrosim are followed. Other rules include that the first joint and link must be absolute, which is taken into account in the generation of every instance of the MAP class. 
+This project on 3D morphologies builds on the 1D phase and introduces a new class called MAP(). MAP() generates a Pyrosim layout that is independent of Pyrosim, connecting multiple blocks while adhering to Pyrosim rules such as avoiding block intersections and ensuring that the first joint and link are absolute. The generation of every MAP class instance takes this rule into account.
 
-The algorithm works as follows:
+The algorithm for generating a new link and block to be added to the layout works as follows:
 
-1. Pick a random link
-2. pick a random face to add a new block
-3. (and now the hard part) Generate the new link and block with relative AND absolute coordinate to avoid collisions.
+1. Randomly select a link.
+2. Randomly select a face to which a new block can be added.
+3. Generate the new link and block with both relative and absolute coordinates to avoid collisions.
 
-The complete output of this is shown above. An instance of the MAP class is created every time the SOLUTION class is initialized, allowing us access to the boy of this class. 
+The complete output of this process is displayed above, and an instance of the MAP class is created each time the SOLUTION class is initialized, granting access to the body of this class.
 
-The neural network was not changed much from previous assignments. A random number of blocks contain sensor and motors, and the network is generated with a series of connections and random weights. This can be seen by adding an "exit()" at the end of Create_Brain() in the SOLUTION class. These random movement can later be evolved along with the randomly generated bodies.
+The neural network for this project remains largely unchanged from previous assignments. A random number of blocks contain sensors and motors, and the network is generated with a set of connections and random weights. This can be observed by adding an "exit()" at the end of Create_Brain() in the SOLUTION class. These random movements can later be evolved in conjunction with the randomly generated bodies.
 
-Note: for this project I used 1x1x1 cubes, but this can easily be adapted with the current framework to random size blocks. Cubes will probably look the cleanest, visually.
+It is worth noting that for this project, 1x1x1 cubes were used, but the current framework can easily be adapted to include blocks of random sizes. While cubes may look visually cleaner, other block shapes can be used.
 
-To see how the MAP() class works, download the repo and run the map.py file (it has a main class where you can create a map of any size and see the output). To run the simulation, simply run search.py.
+To see how the MAP() class works, download the repository and run the map.py file. The main class allows for the creation of a map of any size and output display. To run the simulation, execute the search.py file.
 
-Here is a youtube video of it in action.
+For a demonstration of the project, refer to the YouTube video below, which showcases three bots in action:
 https://www.youtube.com/shorts/q5DsHOAAVd8
