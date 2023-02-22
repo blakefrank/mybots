@@ -16,3 +16,8 @@ The complete output of this is shown above. An instance of the MAP class is crea
 The neural network was not changed much from previous assignments. A random number of blocks contain sensor and motors, and the network is generated with a series of connections and random weights. This can be seen by adding an "exit()" at the end of Create_Brain() in the SOLUTION class. These random movement can later be evolved along with the randomly generated bodies.
 
 Note: for this project I used 1x1x1 cubes, but this can easily be adapted with the current framework to random size blocks. Cubes will probably look the cleanest, visually.
+
+To see how the MAP() class works, download the repo and run the map.py file (it has a main class where you can create a map of any size and see the output). To run the simulation, simply run search.py.
+
+Here is a youtube video of it in action.
+https://www.youtube.com/shorts/q5DsHOAAVd8
