@@ -26,7 +26,9 @@ class SOLUTION:
 		joints = self.map.list_joints
 
 		for i in range(len(self.map.list_links)):
-
+			print("------------------check------------------")
+			print(len(self.map.list_links))
+			print(len(self.sensorLocs))
 			if self.sensorLocs[i] == 1:
 				linkName = links[i].name
 				pyrosim.Send_Sensor_Neuron(name = neuronName , linkName = linkName)
@@ -127,12 +129,15 @@ class SOLUTION:
 		self.weights[randomRow, randomColumn] = random.random() * 2 - 1
 		random_number = random.random()
 		if random_number < 0.5:
+			# pass
 			self.numLinks -= 1
 			self.map.remove_edge_block()
 		else:
-			self.numLinks += 1
-			self.map.find_new_joint_and_link()
-			self.Create_Body()
+			pass
+			# while self.map.find_new_joint_and_link() != False:
+			# 	pass
+			# self.map.incr()
+			# self.Create_Body()
 
 		
 		self.weights_initialized = False

@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 
 class PARALLEL_HILL_CLIMBER:
 	def __init__(self) -> None:
-		os.system("rm body*.nndf")
 		os.system("rm brain*.nndf")
 		os.system("rm fitness*.txt")
 		self.parents = {}
@@ -17,7 +16,7 @@ class PARALLEL_HILL_CLIMBER:
 		self.graph = np.empty((c.populationSize, c.numberOfGenerations))
 		self.currgen = 0
 		for populationID in range(c.populationSize):
-			numlinks=random.randint(5,10)
+			numlinks=random.randint(8,12)
 			new_map = MAP(numlinks)
 			self.parents[populationID] = SOLUTION(self.nextAvailableID, populationID, numlinks=numlinks, map_in=new_map)
 			self.nextAvailableID += 1
@@ -92,7 +91,7 @@ class PARALLEL_HILL_CLIMBER:
 
 		# Loop through each row of the self.graph array and plot it as a line
 		for i in range(self.graph.shape[0]):
-			ax.plot(self.graph[i], label=f'Block {i+1}')
+			ax.plot(self.graph[i], label=f'Body {i+1}')
 
 		# Set the title and axis labels
 		ax.set_title('Fitness over Generations')

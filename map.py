@@ -9,12 +9,14 @@ class MAP():
     def __init__(self, numlinks) -> None:
         self.list_links = list()
         self.list_joints = list()
+        self.nextnum = 0
         self.numlinks = numlinks
         self.create_first_link()
         self.generate()
 
     def create_first_link(self):
         link0 = Link(rel_pos = None, abs_pos=np.array([0,0,1]), num = 0, prev=None)
+        self.nextnum +=1 
         self.list_links.append(link0)
 
     def generate(self):
@@ -27,7 +29,7 @@ class MAP():
         rand_face = random.randint(1,6)
         result = self.generate_new_link_and_joint(parent_link, rand_face)
         #invalid link generated
-        if result == False: return
+        if result == False: return False
         #otherwise
         else:
             new_link = result[0]
@@ -37,8 +39,9 @@ class MAP():
         
             #if this absolute position is intersecting another block or ground, return and try again
         #add the joint and the new link to the map were done
-        self.list_links.append(new_link)
-        self.list_joints.append(new_joint)
+            self.list_links.append(new_link)
+            self.list_joints.append(new_joint)
+            self.nextnum += 1
 
     def generate_new_link_and_joint(self, parent_link, rand_face):
         axis_list = ["0 1 0", "0 1 0", "1 0 0", "1 0 0", "0 0 1", "0 0 1"]
@@ -86,7 +89,7 @@ class MAP():
                 return False
             if not self.is_valid_position(new_abs_block):
                 return False
-            new_link = Link(rel_pos=new_rel_block, abs_pos=new_abs_block, num=len(self.list_links), prev=parent_link)
+            new_link = Link(rel_pos=new_rel_block, abs_pos=new_abs_block, num=self.nextnum, prev=parent_link)
             new_joint = Joint(num = len(self.list_joints), rel_pos=None, abs_pos=new_abs_joint, parent = parent_link, child = new_link, face=rand_face, axis=new_joint_axis)
             return new_link, new_joint
 
@@ -184,7 +187,7 @@ class MAP():
             #finally, need to check_pos(new_absolute_block position)
             if not self.is_valid_position(new_abs_block):
                 return False
-            new_link = Link(rel_pos=new_rel_block, abs_pos=new_abs_block, num=len(self.list_links), prev=parent_link)
+            new_link = Link(rel_pos=new_rel_block, abs_pos=new_abs_block, num=self.nextnum, prev=parent_link)
             new_joint = Joint(num=len(self.list_joints), rel_pos=new_rel_joint, abs_pos=None, parent = parent_link, child= new_link, axis = new_joint_axis, face= rand_face)
             return new_link, new_joint
 
@@ -224,6 +227,8 @@ class MAP():
             if joint_to_remove.name == joint.name:
                 self.list_joints.remove(joint)
             
+    def incr(self):
+        self.nextnum += 1
 
 
 
@@ -245,7 +250,7 @@ if __name__ == '__main__':
     print("-------------------------joints----------------------------")
     for joint in map.list_joints:
         print("{:<15}Abs pos: {:<25}Rel pos: {:<25}face: {}".format(joint.name, str(joint.abs), str(joint.rel), str(joint.face)))
-    map.remove_edge_block()
+    map.find_new_joint_and_link()
     print("-------------------------links----------------------------")
     for link in map.list_links:
         print("{:<15}Abs pos: {:<25}Rel pos: {}".format(link.name, str(link.abs), str(link.rel)))
