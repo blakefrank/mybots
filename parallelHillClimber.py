@@ -3,6 +3,9 @@ from solution import SOLUTION
 import constants as c
 import copy
 import os
+import random
+from map import MAP
+import matplotlib.pyplot as plt
 
 class PARALLEL_HILL_CLIMBER:
 	def __init__(self) -> None:
@@ -11,8 +14,12 @@ class PARALLEL_HILL_CLIMBER:
 		os.system("rm fitness*.txt")
 		self.parents = {}
 		self.nextAvailableID = 0
+		self.graph = np.empty((c.populationSize, c.numberOfGenerations))
+		self.currgen = 0
 		for populationID in range(c.populationSize):
-			self.parents[populationID] = SOLUTION(self.nextAvailableID, populationID)
+			numlinks=random.randint(5,10)
+			new_map = MAP(numlinks)
+			self.parents[populationID] = SOLUTION(self.nextAvailableID, populationID, numlinks=numlinks, map_in=new_map)
 			self.nextAvailableID += 1
 		# self.weights = np.random.rand(3, 2)
 
@@ -21,6 +28,7 @@ class PARALLEL_HILL_CLIMBER:
 		
 		# self.parent.evaluate("GUI")
 		for currentGeneration in range(c.numberOfGenerations):
+
 			self.Evolve_For_One_Generation()
 		# self.SHOW_BEST()
 		
@@ -53,24 +61,46 @@ class PARALLEL_HILL_CLIMBER:
 		print("")
 		for key in self.parents:
 			print("Parent " + str(key) + ": " + str(self.parents[key].fitness) + " Child: " + str(self.children[key].fitness))
+			self.graph[key][self.currgen] = -1*self.parents[key].fitness
 		print("")
+		self.currgen+=1
 	def Show_Best(self):
-		# Find fittest parent
-		fittest = 0
-		best_fitness = self.parents[0].fitness
 
+		
+		bestKey = 0
 		for key in self.parents:
-			if self.parents[key].fitness < best_fitness:
-				best_fitness = self.parents[key].fitness
-				fittest = key
-
-		self.parents[fittest].Start_Simulation("GUI")
+			print(self.parents[key].fitness)
+			if self.parents[key].fitness < self.parents[bestKey].fitness:
+				bestKey = key
+		print("-------------------------------BEST FITNESS-------------------------------")
+		print(self.parents[bestKey].fitness)
+		self.parents[bestKey].Start_Simulation("GUI")
+		self.parents[bestKey].Wait_For_Simulation_To_End("GUI")
+		
 		
 
 
 
 	def Evaluate(self, solutions):
 		for i in solutions:
-			solutions[i].Start_Simulation("GUI")
+			solutions[i].Start_Simulation("DIRECT")
 		for i in solutions:
 			solutions[i].Wait_For_Simulation_To_End("DIRECT")
+
+	def plot(self):
+		fig, ax = plt.subplots()
+
+		# Loop through each row of the self.graph array and plot it as a line
+		for i in range(self.graph.shape[0]):
+			ax.plot(self.graph[i], label=f'Block {i+1}')
+
+		# Set the title and axis labels
+		ax.set_title('Fitness over Generations')
+		ax.set_xlabel('Generation')
+		ax.set_ylabel('Fitness')
+
+		# Add a legend to show which line corresponds to which individual
+		ax.legend()
+
+		# Display the plot
+		plt.show()

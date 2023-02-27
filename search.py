@@ -7,6 +7,8 @@ from parallelHillClimber import PARALLEL_HILL_CLIMBER
 
 phc = PARALLEL_HILL_CLIMBER()
 phc.evolve()
-# phc.Show_Best()
+phc.plot()
+for i in range(3):
+    phc.Show_Best()
 
 

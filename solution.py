@@ -9,12 +9,14 @@ from map import MAP
 
 
 class SOLUTION:
-	def __init__(self, nextAvailableID, populationID):
+	def __init__(self, nextAvailableID, populationID, numlinks, map_in):
 		self.myID = nextAvailableID
 		self.populationID = populationID
-		self.numLinks = random.randint(5,12)
-		self.map = MAP(self.numLinks)
+		self.numLinks = numlinks
+		self.map = map_in
 		self.Create_Body()
+		self.weights_initialized = False
+		
 		
 
 	def Create_Brain(self): 
@@ -36,13 +38,16 @@ class SOLUTION:
 			jointName = joints[i].name
 			pyrosim.Send_Motor_Neuron( name = neuronName , jointName = jointName)
 			neuronName += 1
-		self.weights = np.random.rand(self.numSensorNeurons, self.numLinks-1)*2 - 1
+
+		if self.weights_initialized == False:
+			self.weights = np.random.rand(self.numSensorNeurons, self.numLinks-1)*2 - 1
 
 
 		for currentRow in range(self.numSensorNeurons):
 			for currentColumn in range(self.numLinks-1):
 				pyrosim.Send_Synapse( sourceNeuronName = currentRow , targetNeuronName = currentColumn+self.numSensorNeurons , weight = self.weights[currentRow][currentColumn] )
 
+		self.weights_initialized= True
 		pyrosim.End()
 
 	def Create_Body(self):
@@ -103,6 +108,7 @@ class SOLUTION:
 	def Start_Simulation(self, directOrGUI):
 		self.Create_World()
 		self.Create_Brain()
+
 		# os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " " + str(self.populationID) + " 2&>1 &")
 		os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " " + str(self.populationID) + " &")
 		
@@ -119,6 +125,18 @@ class SOLUTION:
 		randomRow = random.randint(0,self.numSensorNeurons-1)
 		randomColumn = random.randint(0,self.numLinks-2)
 		self.weights[randomRow, randomColumn] = random.random() * 2 - 1
+		random_number = random.random()
+		if random_number < 0.5:
+			self.numLinks -= 1
+			self.map.remove_edge_block()
+		else:
+			self.numLinks += 1
+			self.map.find_new_joint_and_link()
+			self.Create_Body()
+
+		
+		self.weights_initialized = False
+
 
 	def Set_ID(self, id):
 		self.myID = id

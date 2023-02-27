@@ -2,6 +2,7 @@ import numpy as np
 from joint import Joint
 from link import Link
 import random
+import copy
 
 
 class MAP():
@@ -203,6 +204,33 @@ class MAP():
         for joint in self.list_joints:
             if joint.child.num == parent_link.num:
                 return joint.face
+
+    def remove_edge_block(self):
+        edge_links = copy.deepcopy(self.list_links)
+        for joint in self.list_joints:
+            joint_name = joint.parent.name
+            for link in edge_links:
+                if link.name == joint_name:
+                    edge_links.remove(link)
+        link_to_remove = random.choice(edge_links)
+        for joint in self.list_joints:
+            if joint.child.name == link_to_remove.name:
+                joint_to_remove = joint
+        for link in self.list_links:
+            if link.name == link_to_remove.name:
+                self.list_links.remove(link)
+        
+        for joint in self.list_joints:
+            if joint_to_remove.name == joint.name:
+                self.list_joints.remove(joint)
+            
+
+
+
+            
+
+
+
                 
 
 
@@ -210,11 +238,17 @@ class MAP():
 
 
 if __name__ == '__main__':
-    map = MAP(numlinks=20)
+    map = MAP(numlinks=5)
     print("-------------------------links----------------------------")
     for link in map.list_links:
         print("{:<15}Abs pos: {:<25}Rel pos: {}".format(link.name, str(link.abs), str(link.rel)))
     print("-------------------------joints----------------------------")
     for joint in map.list_joints:
         print("{:<15}Abs pos: {:<25}Rel pos: {:<25}face: {}".format(joint.name, str(joint.abs), str(joint.rel), str(joint.face)))
-
+    map.remove_edge_block()
+    print("-------------------------links----------------------------")
+    for link in map.list_links:
+        print("{:<15}Abs pos: {:<25}Rel pos: {}".format(link.name, str(link.abs), str(link.rel)))
+    print("-------------------------joints----------------------------")
+    for joint in map.list_joints:
+        print("{:<15}Abs pos: {:<25}Rel pos: {:<25}face: {}".format(joint.name, str(joint.abs), str(joint.rel), str(joint.face)))
