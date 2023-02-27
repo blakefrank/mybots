@@ -1,9 +1,3 @@
-Here is the implementation of the 1d robot with a random number of randomly shaped links with random sensor placement along the chain.
+This is Assignment 8, with the task of creating random body plans, and evolving them with changes in the brain and the body for each generation. Much of assignment 7's documentation will be referenced. To see how assignment 7 work sas well as body generation using the MAP class, [see here](https://github.com/blakefrank/mybots/tree/3d-morphologies)
 
-Links with and without sensors should are colored green and blue, respectively.
-
-To run it, download these files and run search.py.
-
-This code still finds the fastest robot and evolves them randomly, which is cool. 
-
-Here is a youtube link of an example of this working: https://www.youtube.com/watch?v=PBEZR1dU2SQ
+See the diagram below for the process of how functions call eachother.
