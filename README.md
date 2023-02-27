@@ -10,3 +10,5 @@ Subsequently, the "remove_edge_block(self)" function was integrated into the "Mu
 
 Once the process is complete, each lineage is plotted and the best offspring is presented in the simulation. Here is an example of what a fitness curve might look like with Population = 5 and Generations = 10: 
 <img width="578" alt="Screen Shot 2023-02-27 at 3 03 20 PM" src="https://user-images.githubusercontent.com/86979153/221685180-0efafb9a-a6ab-488e-b323-e80ca989e179.png">
+
+Right now, the code is still not perfect. There is an issue sometimes with removing and adding links. Currently, when both capabilities (adding and removing) are both activated, the code will occasionally run into errors in brain generation. I am still trying to get to the bottom of this. The mutations generally work well and generate a fit robot!
