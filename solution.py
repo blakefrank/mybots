@@ -26,9 +26,9 @@ class SOLUTION:
 		joints = self.map.list_joints
 
 		for i in range(len(self.map.list_links)):
-			print("------------------check------------------")
-			print(len(self.map.list_links))
-			print(len(self.sensorLocs))
+			# print("------------------check------------------")
+			# print(len(self.map.list_links))
+			# print(len(self.sensorLocs))
 			if self.sensorLocs[i] == 1:
 				linkName = links[i].name
 				pyrosim.Send_Sensor_Neuron(name = neuronName , linkName = linkName)
@@ -116,24 +116,32 @@ class SOLUTION:
 		
 	def Wait_For_Simulation_To_End(self, directOrGUI):
 		while not os.path.exists("fitness" + str(self.myID) + ".txt"):
-			time.sleep(1)
+			time.sleep(0.02)
 		fitnessFile = open("fitness" + str(self.myID) + ".txt", "r")
-		fitnessValue = float(fitnessFile.read())
-		self.fitness = fitnessValue
-		fitnessFile.close()
+		while True:
+			try:
+				fitnessValue = float(fitnessFile.read())
+				self.fitness = fitnessValue
+				fitnessFile.close()
+				break
+			except:
+				continue
 		os.system("rm fitness" + str(self.myID) + ".txt")
+
+		
+
 
 	def Mutate(self):
 		randomRow = random.randint(0,self.numSensorNeurons-1)
 		randomColumn = random.randint(0,self.numLinks-2)
 		self.weights[randomRow, randomColumn] = random.random() * 2 - 1
-		random_number = random.random()
-		if random_number < 0.5:
-			# pass
-			self.numLinks -= 1
-			self.map.remove_edge_block()
-		else:
-			pass
+		# random_number = random.random()
+		# if random_number < 0.5:
+		# 	# pass
+		# 	self.numLinks -= 1
+		# 	self.map.remove_edge_block()
+		# else:
+		# 	pass
 			# while self.map.find_new_joint_and_link() != False:
 			# 	pass
 			# self.map.incr()

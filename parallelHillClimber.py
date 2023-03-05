@@ -6,11 +6,13 @@ import os
 import random
 from map import MAP
 import matplotlib.pyplot as plt
+import shutil
 
 class PARALLEL_HILL_CLIMBER:
-	def __init__(self) -> None:
+	def __init__(self, number) -> None:
 		os.system("rm brain*.nndf")
 		os.system("rm fitness*.txt")
+		self.number = number
 		self.parents = {}
 		self.nextAvailableID = 0
 		self.graph = np.empty((c.populationSize, c.numberOfGenerations))
@@ -20,6 +22,7 @@ class PARALLEL_HILL_CLIMBER:
 			new_map = MAP(numlinks)
 			self.parents[populationID] = SOLUTION(self.nextAvailableID, populationID, numlinks=numlinks, map_in=new_map)
 			self.nextAvailableID += 1
+		
 		# self.weights = np.random.rand(3, 2)
 
 	def evolve(self):
@@ -56,12 +59,12 @@ class PARALLEL_HILL_CLIMBER:
 				self.parents[key] = self.children[key]
 
 	def Print(self):
-		print("")
-		print("")
+		# print("")
+		# print("")
 		for key in self.parents:
-			print("Parent " + str(key) + ": " + str(self.parents[key].fitness) + " Child: " + str(self.children[key].fitness))
+			# print("Parent " + str(key) + ": " + str(self.parents[key].fitness) + " Child: " + str(self.children[key].fitness))
 			self.graph[key][self.currgen] = -1*self.parents[key].fitness
-		print("")
+		# print("")
 		self.currgen+=1
 	def Show_Best(self):
 
@@ -85,21 +88,26 @@ class PARALLEL_HILL_CLIMBER:
 			solutions[i].Start_Simulation("DIRECT")
 		for i in solutions:
 			solutions[i].Wait_For_Simulation_To_End("DIRECT")
+		
+	def get_avg_row(self):
+		# Calculate the average fitness over generations
+		average_fitness = np.mean(self.graph, axis=0)
 
-	def plot(self):
-		fig, ax = plt.subplots()
+		return average_fitness
 
-		# Loop through each row of the self.graph array and plot it as a line
-		for i in range(self.graph.shape[0]):
-			ax.plot(self.graph[i], label=f'Body {i+1}')
+	def find_best_fitness_value(self):
+		self.highest_row_index = np.argmax(self.graph, axis=0)[1]
+		best_body_file = f'body{self.highest_row_index}.urdf'
+		best_body_dir = f'phc{self.number}'
 
-		# Set the title and axis labels
-		ax.set_title('Fitness over Generations')
-		ax.set_xlabel('Generation')
-		ax.set_ylabel('Fitness')
+		# Create the directory if it doesn't exist
+		if not os.path.exists(best_body_dir):
+			os.makedirs(best_body_dir)
 
-		# Add a legend to show which line corresponds to which individual
-		ax.legend()
+		# Copy all body files to the directory
+		for i, parent in enumerate(self.parents):
+			body_file = f'body{i}.urdf'
+			shutil.copyfile(body_file, os.path.join(best_body_dir, body_file))
 
-		# Display the plot
-		plt.show()
+		# Return the highest fitness value
+		return np.amax(self.graph)

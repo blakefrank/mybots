@@ -8,8 +8,8 @@ import os
 import time
 class ROBOT:
 	def __init__(self, solutionID, populationID):
-		print("-------------------POP ID--------------------")
-		print(populationID)
+		# print("-------------------POP ID--------------------")
+		# print(populationID)
 		self.robotId = p.loadURDF("body" + str(populationID) + ".urdf")
 		self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")
 		self.solutionID = solutionID
