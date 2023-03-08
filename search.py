@@ -5,7 +5,10 @@ import constants as c
 from parallelHillClimber import PARALLEL_HILL_CLIMBER
 import shutil
 import time
-
+import pickle
+import random
+np.random.seed(2)
+random.seed(2)
 max_fitness_value = -np.inf # initialize to negative infinity
 max_fitness_phc = None # initialize to None
 arr = np.zeros((c.numberOfGenerations, 5))
@@ -26,7 +29,7 @@ print("------cleaning up body files, waiting 5 sec--------")
 os.system("rm body*.urdf")
 time.sleep(5)
 
-for i in range(5):
+for i in range(c.populationSize):
     src = f"phc{max_fitness_phc.number}/body{i}.urdf"
     dst = f"body{i}.urdf"
     shutil.copyfile(src, dst)
@@ -49,6 +52,18 @@ plt.show()
 
 # Call Show_Best() on the instance with the highest fitness value
 
+# Define the variable you want to save
+my_variable = max_fitness_phc
+
+# Save the variable to a file
+with open('my_variable.pickle', 'wb') as f:
+    pickle.dump(my_variable, f)
 
 max_fitness_phc.Show_Best()
+
+
+
+exit()
+
+
 

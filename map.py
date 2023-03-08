@@ -3,6 +3,7 @@ from joint import Joint
 from link import Link
 import random
 import copy
+import constants as c
 
 
 class MAP():

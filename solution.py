@@ -111,8 +111,8 @@ class SOLUTION:
 		self.Create_World()
 		self.Create_Brain()
 
-		# os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " " + str(self.populationID) + " 2&>1 &")
-		os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " " + str(self.populationID) + " &")
+		os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " " + str(self.populationID) + " 2&>1 &")
+		# os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " " + str(self.populationID) + " &")
 		
 	def Wait_For_Simulation_To_End(self, directOrGUI):
 		while not os.path.exists("fitness" + str(self.myID) + ".txt"):

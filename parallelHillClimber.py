@@ -96,7 +96,7 @@ class PARALLEL_HILL_CLIMBER:
 		return average_fitness
 
 	def find_best_fitness_value(self):
-		self.highest_row_index = np.argmax(self.graph, axis=0)[1]
+		self.highest_row_index = np.argmax(self.graph, axis=0)
 		best_body_file = f'body{self.highest_row_index}.urdf'
 		best_body_dir = f'phc{self.number}'
 
