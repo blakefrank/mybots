@@ -12,6 +12,9 @@ class Link():
         #set first block to size 1,1,1, randomize the rest
         if num != 1: self.dims = [random.uniform(1.5, 2), random.uniform(1.5, 2), random.uniform(1.5, 2)]
         else: self.dims = [1,1,1]
+    
+    def fix_name(self):
+        self.name = "Link" + str(self.num)
 
 
 

@@ -66,9 +66,8 @@ class PARALLEL_HILL_CLIMBER:
 			self.graph[key][self.currgen] = -1*self.parents[key].fitness
 		# print("")
 		self.currgen+=1
-	def Show_Best(self):
 
-		
+	def Show_Best(self):
 		bestKey = 0
 		for key in self.parents:
 			print(self.parents[key].fitness)
@@ -91,7 +90,7 @@ class PARALLEL_HILL_CLIMBER:
 		
 	def get_avg_row(self):
 		# Calculate the average fitness over generations
-		average_fitness = np.mean(self.graph, axis=0)
+		average_fitness = np.max(self.graph, axis=0)
 
 		return average_fitness
 

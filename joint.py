@@ -11,3 +11,6 @@ class Joint():
         self.axis = axis
         self.face = face
         self.name = self.parent.name + "_" + self.child.name
+
+    def fix_name(self):
+        self.name = self.parent.name + "_" + self.child.name

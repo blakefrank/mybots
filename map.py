@@ -232,27 +232,47 @@ class MAP():
         self.nextnum += 1
 
 
+    def fix(self):
+        # Sort the links in the map by their number
+        self.list_links.sort(key=lambda link: link.num)
 
-            
+        # Fix the numbering and names of the links
+        for i, link in enumerate(self.list_links):
+            link.num = i
+            link.fix_name()
 
+        # Fix the numbering and names of the joints
+        for joint in self.list_joints:
+            # Get the parent and child links of the joint
+            parent_link = joint.parent
+            child_link = joint.child
 
+            # Get the new names of the parent and child links after the numbering is fixed
+            new_parent_name = "Link" + str(parent_link.num)
+            new_child_name = "Link" + str(child_link.num)
 
-                
+            # Update the joint name with the new link names
+            joint.name = new_parent_name + "_" + new_child_name
 
-
-    
-
+    print("Fix completed successfully")
 
 if __name__ == '__main__':
-    map = MAP(numlinks=5)
-    print("-------------------------links----------------------------")
+    map = MAP(numlinks=8)
+    print("\n-------------------------links----------------------------")
     for link in map.list_links:
         print("{:<15}Abs pos: {:<25}Rel pos: {}".format(link.name, str(link.abs), str(link.rel)))
     print("-------------------------joints----------------------------")
     for joint in map.list_joints:
         print("{:<15}Abs pos: {:<25}Rel pos: {:<25}face: {}".format(joint.name, str(joint.abs), str(joint.rel), str(joint.face)))
-    map.find_new_joint_and_link()
-    print("-------------------------links----------------------------")
+    map.remove_edge_block()
+    print("\n-------------------------links----------------------------")
+    for link in map.list_links:
+        print("{:<15}Abs pos: {:<25}Rel pos: {}".format(link.name, str(link.abs), str(link.rel)))
+    print("-------------------------joints----------------------------")
+    for joint in map.list_joints:
+        print("{:<15}Abs pos: {:<25}Rel pos: {:<25}face: {}".format(joint.name, str(joint.abs), str(joint.rel), str(joint.face)))
+    map.fix()
+    print("\n-------------------------links----------------------------")
     for link in map.list_links:
         print("{:<15}Abs pos: {:<25}Rel pos: {}".format(link.name, str(link.abs), str(link.rel)))
     print("-------------------------joints----------------------------")

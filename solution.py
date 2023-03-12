@@ -5,7 +5,7 @@ import random
 import time
 import os
 from map import MAP
-
+import copy
 
 
 class SOLUTION:
@@ -14,8 +14,10 @@ class SOLUTION:
 		self.populationID = populationID
 		self.numLinks = numlinks
 		self.map = map_in
+		self.sensorLocs = np.random.randint(2, size=self.numLinks)
 		self.Create_Body()
 		self.weights_initialized = False
+		
 		
 		
 
@@ -26,9 +28,6 @@ class SOLUTION:
 		joints = self.map.list_joints
 
 		for i in range(len(self.map.list_links)):
-			# print("------------------check------------------")
-			# print(len(self.map.list_links))
-			# print(len(self.sensorLocs))
 			if self.sensorLocs[i] == 1:
 				linkName = links[i].name
 				pyrosim.Send_Sensor_Neuron(name = neuronName , linkName = linkName)
@@ -60,7 +59,7 @@ class SOLUTION:
 
 		# Length of body
 		
-		self.sensorLocs = np.random.randint(2, size=self.numLinks)
+		
 
 		material = "Green" if self.sensorLocs[0] == 1 else "Blue"
 
@@ -80,11 +79,10 @@ class SOLUTION:
 			else:
 				jointPos = curr_joint.rel 
 
-			assert(type(jointPos) != type(None))
 			jointAxis = curr_joint.axis
-			assert(type(jointAxis) == type(str()))
 
 			pyrosim.Send_Joint( name = jointName , parent= parentName , child = childName , type = "revolute", position = jointPos, jointAxis = jointAxis)
+
 			material = "Green" if self.sensorLocs[i] == 1 else "Blue"
 			pyrosim.Send_Cube(name= childName, pos=childPos, size=[1,1,1], material = material, rgba = self.Get_rgba(material))
 
@@ -108,6 +106,7 @@ class SOLUTION:
 	
 	
 	def Start_Simulation(self, directOrGUI):
+		self.Create_Body()
 		self.Create_World()
 		self.Create_Brain()
 
@@ -135,17 +134,32 @@ class SOLUTION:
 		randomRow = random.randint(0,self.numSensorNeurons-1)
 		randomColumn = random.randint(0,self.numLinks-2)
 		self.weights[randomRow, randomColumn] = random.random() * 2 - 1
-		# random_number = random.random()
-		# if random_number < 0.5:
-		# 	# pass
-		# 	self.numLinks -= 1
-		# 	self.map.remove_edge_block()
-		# else:
-		# 	pass
-			# while self.map.find_new_joint_and_link() != False:
-			# 	pass
-			# self.map.incr()
-			# self.Create_Body()
+		random_number = random.random()
+		if random_number < c.probtoremove:
+			self.map.remove_edge_block()
+			self.map.fix()
+			self.sensorLocs = np.random.randint(2, size=len(self.map.list_links))
+			# print("--------Link Removed----------")
+			# print("--------SensorLocs----------")
+			# print(self.sensorLocs)
+			# print("--------Numlinks----------")
+			# print(len(self.map.list_links))
+			self.Create_Body()
+		else:
+			while self.map.find_new_joint_and_link() != False:
+				pass
+			self.map.incr()
+			# self.numLinks +=1
+			self.sensorLocs = np.random.randint(2, size=len(self.map.list_links))
+			# print("--------Link Added----------")
+			# print("--------SensorLocs----------")
+			# print(self.sensorLocs)
+			# print("--------Numlinks----------")
+			# print(len(self.map.list_links))
+			self.Create_Body()
+			
+			
+
 
 		
 		self.weights_initialized = False

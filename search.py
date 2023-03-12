@@ -7,12 +7,13 @@ import shutil
 import time
 import pickle
 import random
-np.random.seed(2)
-random.seed(2)
+
+np.random.seed(c.randomSeed)
+random.seed(c.randomSeed)
 max_fitness_value = -np.inf # initialize to negative infinity
 max_fitness_phc = None # initialize to None
 arr = np.zeros((c.numberOfGenerations, 5))
-for i in range(5):
+for i in range(c.number_of_phcs):
     phc = PARALLEL_HILL_CLIMBER(i)
     phc.evolve()
     new_row = phc.get_avg_row()
@@ -40,15 +41,24 @@ for dir_name in os.listdir('.'):
         shutil.rmtree(dir_name)
 
 # Set the title and axis labels
-plt.title('Average Fitness over PHC Generations')
+plt.title(f'Average Fitness over PHC Generations (Population Size: {c.populationSize}, \nGenerations: {c.numberOfGenerations}, PHCs: {c.number_of_phcs}, Random Seed: {c.randomSeed}), P(remove) = {c.probtoremove})')
 plt.xlabel('Generation')
 plt.ylabel('Fitness')
 
 # Add a legend to show which line corresponds to which individual
 plt.legend()
 
+# Define the filename for saving the plot
+filename = f'fitness_plot_pop{c.populationSize}_gen{c.numberOfGenerations}_phcs{c.number_of_phcs}_seed{c.randomSeed}_PR{c.probtoremove}.png'
+
+# Save the plot to the specified filename
+plt.savefig(filename)
+
 # Display the plot
 plt.show()
+
+
+
 
 # Call Show_Best() on the instance with the highest fitness value
 
