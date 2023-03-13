@@ -19,3 +19,8 @@ Going a bit deeper, each PHC is initialized with the MAP class creating random b
 
 ![Page1-1](https://user-images.githubusercontent.com/86979153/224611926-8b60ef86-6d20-47c5-a593-156ac07d03c0.jpg)
 ![Page2-1](https://user-images.githubusercontent.com/86979153/224611939-7252b450-3541-4e5b-9d07-78c0b76b9290.jpg)
+
+Going even deeper, after each PHC is created, each member of the population is initialized with the MAP class. The PHC then uses literally parrallel hillclimber algorithms to facilitate reproduction and mutation, as shown below.
+![PHC diagrams ](https://user-images.githubusercontent.com/86979153/224771055-0bc3d152-52b4-4adf-b870-d5d39aaa82ef.jpg)
+
+
