@@ -28,3 +28,9 @@ Furthermore, after the creation of each PHC, every member of the population is i
 
 To summarize, search.py runs five instances of the Parallel Hillclimber. Each PHC has a specific number of hillclimbers that evolve based on the hillclimber algorithm. This algorithm generates a child and compares its fitness with the parent, replacing the parent if a beneficial mutation occurred. The map class controls the body of each individual hillclimber, and the mutations. 
 
+<h1 align="center"><b>Methods</b></h1>
+
+I hypothesized that the Experimental groups with additive and subractive mutations would outperform the control group, consistently. I was limited, however to how many simulations I could perform. Here is a diagram that illustrates the three different groups and the difference between them. 
+
+![Note Mar 13, 2023](https://user-images.githubusercontent.com/86979153/224774918-bc7aedc4-20c9-4eb4-b881-c29bd05af554.jpg)
+
