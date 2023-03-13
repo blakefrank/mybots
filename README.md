@@ -33,6 +33,8 @@ To summarize, search.py runs five instances of the Parallel Hillclimber. Each PH
 I hypothesized that the Experimental groups with additive and subractive mutations would outperform the control group, consistently. I was limited, however to how many simulations I could perform. Here is a diagram that illustrates the three different groups and the difference between them. 
 
 ![Note Mar 13, 2023](https://user-images.githubusercontent.com/86979153/224774918-bc7aedc4-20c9-4eb4-b881-c29bd05af554.jpg)
-
 <h1 align="center"><b>Graphs and Results</b></h1>
 
+How many sims am I trying to do? Well, we want approximately 17,000 simulations per group. This sould work out to 10 PHCs, with population size of 20 and 85 generations. 3 Runs of this gets 51,000 simulations. 20 * 85 * 10 * 3 = 51,000. 
+
+Starting with the control group: 
