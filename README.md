@@ -1,19 +1,13 @@
-This is Assignment 8, which involves the creation of randomized body plans and their evolution through successive generations, achieved by making changes to the brain and body. To facilitate this task, we will make reference to the documentation from Assignment 7. To learn about the operation of Assignment 7 and the process of body generation using the MAP class, please refer to this link. [see here](https://github.com/blakefrank/mybots/tree/3d-morphologies)
+This is my final project, which is based on the Ludobots subreddit. I utilized the hillclimber algorithm developed on r/ludobots and the parallel hillclimber to conduct an evolutionary experiment.
 
-See the diagram below for the process of how functions call eachother.
-![Assignment 8 ](https://user-images.githubusercontent.com/86979153/221684765-38b05540-36fa-43f0-b8ea-ad2a2c1eb4f8.jpg)
+Starting from the conclusion of the Ludobots development, I created a method to generate non-overlapping random bodies using the map class. You can observe this in action by downloading the repository and running map.py to produce a pyrosim or pybullet compatible body map to initiate evolution. This process was complex to develop. Additionally, two algorithms were developed to add and remove blocks in a pybullet-compatible way, ensuring that these bodies remain compatible even after a mutation.
 
+For this experiment, I hypothesized that adding or removing blocks for each generation as a mutation is a more effective form of evolution than solely generating a new brain randomly, resulting in better (fitter) creatures. Fitness was simply defined as the ability to walk quickly, mainly into the screen and away from the user to the left.
 
-The MAP class is tailored to the population size, which in this case is 5. To enhance its capabilities, a new method called "remove_edge_block(self)" was added to the MAP class. This method utilizes string comparisons, as well as the properties of joints and links, to randomly select and remove an edge joint and link. An edge link is defined as one that does not have a joint with that link as its parent.
+To test this, the control group is a simulation of robots that generate a random brain for each successive generation, evolving based on the hillclimber algorithm.
 
-Subsequently, the "remove_edge_block(self)" function was integrated into the "Mutate()" function of "solution.py". This modification allows for a 50% chance of removing a link and joint and a 50% chance of adding a new link and joint, using the existing function in MAP.
+The experimental groups consist of two separate groups, one with an 80% chance of adding a new link after each generation and the other with a 20% chance. Regardless, a link will either be added or removed after each generation, and these numbers control the probabilities. Here are some diagrams to demonstrate how different processses in this experiment work. 
 
-Essentially, evolution occurs through random additions and removing of block with changes in weights for each population member. 
+Starting high up, the search.py file runs the evolution of 10 parallel hill climbers in succession. 
 
-Once the process is complete, each lineage is plotted and the best offspring is presented in the simulation. Here is an example of what a fitness curve might look like with Population = 5 and Generations = 10: 
-
-<img width="578" alt="Screen Shot 2023-02-27 at 3 03 20 PM" src="https://user-images.githubusercontent.com/86979153/221685180-0efafb9a-a6ab-488e-b323-e80ca989e179.png">
-
-Right now, the code is still not perfect. There is an issue sometimes with removing and adding links. Currently, when both capabilities (adding and removing) are both activated, the code will occasionally run into errors in brain generation. I am still trying to get to the bottom of this. The mutations generally work well and generate a fit robot!
-
-To run the code, as done previously, download the repo, and execute search.py.
+![Assignment 8 -1](https://user-images.githubusercontent.com/86979153/224610453-9d058c7b-adb7-4313-bef5-b6658bb6a9d5.jpg)
