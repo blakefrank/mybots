@@ -1,3 +1,5 @@
+<h1 align="center"><b>Introduction</b></h1>
+
 This is my final project based on the Ludobots subreddit, where I conducted an evolutionary experiment using the hillclimber algorithm developed on r/ludobots and the parallel hillclimber.
 
 After the Ludobots development, I developed a method to generate non-overlapping random bodies using the map class. You can observe this process by downloading the repository and running map.py to produce a pyrosim or pybullet compatible body map to initiate evolution. Additionally, I created two algorithms to add and remove blocks in a pybullet-compatible way, ensuring that these bodies remain compatible after a mutation. The development of this process was complex.
@@ -20,7 +22,9 @@ Going a bit deeper, each PHC is initialized with the MAP class creating random b
 ![Page1-1](https://user-images.githubusercontent.com/86979153/224611926-8b60ef86-6d20-47c5-a593-156ac07d03c0.jpg)
 ![Page2-1](https://user-images.githubusercontent.com/86979153/224611939-7252b450-3541-4e5b-9d07-78c0b76b9290.jpg)
 
-Going even deeper, after each PHC is created, each member of the population is initialized with the MAP class. The PHC then uses literally parrallel hillclimber algorithms to facilitate reproduction and mutation, as shown below.
+Furthermore, after the creation of each PHC, every member of the population is initialized with the MAP class. Then, the PHC employs parallel hillclimber algorithms, as illustrated below, to facilitate reproduction and mutation.
+
 ![PHC diagrams ](https://user-images.githubusercontent.com/86979153/224771055-0bc3d152-52b4-4adf-b870-d5d39aaa82ef.jpg)
 
+To summarize, search.py runs five instances of the Parallel Hillclimber. Each PHC has a specific number of hillclimbers that evolve based on the hillclimber algorithm. This algorithm generates a child and compares its fitness with the parent, replacing the parent if a beneficial mutation occurred. The map class controls the body of each individual hillclimber, and the mutations. 
 
