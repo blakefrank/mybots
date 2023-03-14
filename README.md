@@ -20,6 +20,7 @@ My hypothesis for this experiment was that adding or removing blocks as a mutati
 
 This hypothesis is general and speculates that a mutation such as adding or removing links will be beneficial to the creature over time, using the hillclimber algorithm. This algorithm simply replaces the parent with a child if the child outperforms the parent.
 
+
 To test this, the control group comprised a simulation of robots that generated a random brain for each successive generation, evolving based on the hillclimber algorithm.
 
 The experimental groups consisted of two separate groups, one with an 80% chance of adding a new link after each generation and the other with a 20% chance. Regardless, a link would be added or removed after each generation, and these probabilities were controlled. Diagrams were provided to demonstrate the different processes in this experiment.
