@@ -48,7 +48,7 @@ Starting with the control group:
 
 ![control](https://user-images.githubusercontent.com/86979153/224901843-d7479887-3ac6-4109-833c-9b9716e9d900.png)
 
-This group's only mutation is re-randomizing the brain and sensor neurons every time. 
+This group's only mutation is re-randomizing the brain (motor and sensor neurons) for each parent's reproduction. 
 
 Experimental group #1 with adding links favored at (80%): 
 
