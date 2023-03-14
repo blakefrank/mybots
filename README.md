@@ -29,7 +29,7 @@ Starting with the search.py file, the evolution of ten parallel hill climbers oc
 
 Here is a higher up overview of what is going on:
 
-Random seed = 3
+Random seed = 3, Simulation Length = 3000
 
 ![Assignment 8 -1](https://user-images.githubusercontent.com/86979153/224610453-9d058c7b-adb7-4313-bef5-b6658bb6a9d5.jpg)
 
