@@ -1,5 +1,5 @@
 <h1 align="center"><b>Videos</b></h1>
-[![2 min video](https://img.youtube.com/vi/xcZ4Imb1-G8/0.jpg)](https://www.youtube.com/watch?v=xcZ4Imb1-G8) (with teaser gif to start)
+[2 min video](https://youtu.be/xcZ4Imb1-G8) (with teaser gif to start)
 
 <h1 align="center"><b>Introduction</b></h1>
 
