@@ -13,7 +13,7 @@ This is my final project based on the Ludobots subreddit, where I conducted an e
 
 After the Ludobots development, I developed a method to generate non-overlapping random bodies using the map class. You can observe this process by downloading the repository and running map.py to produce a pyrosim or pybullet compatible body map to initiate evolution. Additionally, I created two algorithms to add and remove blocks in a pybullet-compatible way, ensuring that these bodies remain compatible after a mutation. The development of this process was complex.
 
-To actually run my code. Download the Repo and run search.py with the constants that you desire.
+To actually run my code, download the Repo and run search.py with the constants that you desire.
 
 My hypothesis for this experiment was that adding or removing blocks as a mutation for each generation is a more effective form of evolution than generating a new brain randomly, resulting in fitter creatures. In this case, fitness was defined as the ability to walk quickly, mainly into the screen and away from the user to the left.
 
