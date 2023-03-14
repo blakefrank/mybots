@@ -18,7 +18,7 @@ Here is a higher up overview of what is going on
 
 ![Assignment 8 -1](https://user-images.githubusercontent.com/86979153/224610453-9d058c7b-adb7-4313-bef5-b6658bb6a9d5.jpg)
 
-Going a bit deeper, each PHC is initialized with the MAP class creating random bodies according to the population size. The MAP class instantly creates links and joints to form a body that can be used for evolution.
+Going a bit deeper, each PHC is initialized with the MAP class creating random bodies according to the population size. The MAP class instantly creates links and joints to form a body that can be used for evolution. Each robots starts with 8 to 12 links (random amount).
 
 
 ![Page1-1](https://user-images.githubusercontent.com/86979153/224611926-8b60ef86-6d20-47c5-a593-156ac07d03c0.jpg)
@@ -62,3 +62,6 @@ Each group ran 17,000 simulations for a total of 50,000 simulations. Each group 
 
 <h1 align="center"><b>Discussion</b></h1>
 
+It is clear that the best performing group was experimental group #2, that has an 80% chance of removing a link after each generation. This was rather surprising to be, as I woudl think continuosly getting rid of links could possibly hurt the locomotive abilities of the robots. Compared to the control group and experimental group #1, the removing of links created fewer good mutations, but the mutations that did occur were monumentally better. The end result was a robots that was able to walk 25 positions into the screen, and would have kept going if it had more time. Even though every population memebr of every PHC started with between 8 to 12 links, according to the map class, the final and best robot only contained 3 links!
+
+It seems that complicated mutations are not always better, and neither are complicated bodies. The final and best robot of experimental group #2 simply galloped across the screen like a snake with only 3 blocks. It is quite incredible that after all of this complicated work and algorithms, the final bot only had 3 blocks, each of which contained a sensor neuron! 
