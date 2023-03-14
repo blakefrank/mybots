@@ -26,7 +26,7 @@ Going a bit deeper, each PHC is initialized with the MAP class creating random b
 
 Furthermore, after the creation of each PHC, every member of the population is initialized with the MAP class. Then, the PHC employs parallel hillclimber algorithms, as illustrated below, to facilitate reproduction and mutation.
 
-![Page1-2](https://user-images.githubusercontent.com/86979153/224908981-e1233245-f209-491f-8254-5d490b148cf4.jpg)
+
 
 To summarize, search.py runs 10 instances of the Parallel Hillclimber. Each PHC has a specific number of hillclimbers that evolve based on the hillclimber algorithm. This algorithm generates a child and compares its fitness with the parent, replacing the parent if a beneficial mutation occurred. The map class controls the body of each individual hillclimber, and the mutations. I made sure that every sinlge population is seeded differently. The simple solution for this is to include a random.seed() as the first line run in the code, and the rest will be taken care of through the pseudorandom process that moves a points through a list of random numbers.
 
@@ -40,7 +40,7 @@ Finally, I do not want to go down the rabbit hole of trying to explain exactly h
 
 I hypothesized that the Experimental groups with additive and subractive mutations would outperform the control group, consistently. Here is a diagram that illustrates the three different groups and the difference between them. 
 
-![Note Mar 13, 2023](https://user-images.githubusercontent.com/86979153/224774918-bc7aedc4-20c9-4eb4-b881-c29bd05af554.jpg)
+![Page1-2](https://user-images.githubusercontent.com/86979153/224908981-e1233245-f209-491f-8254-5d490b148cf4.jpg)
 <h1 align="center"><b>Graphs and Results</b></h1>
 
 How many simulations am I trying to do? Well, we want approximately 17,000 simulations per group. This should work out to 10 PHCs, with population size of 20 and 85 generations. 3 Runs of this gets 51,000 simulations. 20 * 85 * 10 * 3 = 51,000. 
