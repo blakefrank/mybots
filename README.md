@@ -26,7 +26,7 @@ Going a bit deeper, each PHC is initialized with the MAP class creating random b
 
 Furthermore, after the creation of each PHC, every member of the population is initialized with the MAP class. Then, the PHC employs parallel hillclimber algorithms, as illustrated below, to facilitate reproduction and mutation.
 
-![PHC diagrams ](https://user-images.githubusercontent.com/86979153/224771055-0bc3d152-52b4-4adf-b870-d5d39aaa82ef.jpg)
+![Page1-2](https://user-images.githubusercontent.com/86979153/224908981-e1233245-f209-491f-8254-5d490b148cf4.jpg)
 
 To summarize, search.py runs five instances of the Parallel Hillclimber. Each PHC has a specific number of hillclimbers that evolve based on the hillclimber algorithm. This algorithm generates a child and compares its fitness with the parent, replacing the parent if a beneficial mutation occurred. The map class controls the body of each individual hillclimber, and the mutations. 
 
