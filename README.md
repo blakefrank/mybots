@@ -28,7 +28,7 @@ Furthermore, after the creation of each PHC, every member of the population is i
 
 ![Page1-2](https://user-images.githubusercontent.com/86979153/224908981-e1233245-f209-491f-8254-5d490b148cf4.jpg)
 
-To summarize, search.py runs five instances of the Parallel Hillclimber. Each PHC has a specific number of hillclimbers that evolve based on the hillclimber algorithm. This algorithm generates a child and compares its fitness with the parent, replacing the parent if a beneficial mutation occurred. The map class controls the body of each individual hillclimber, and the mutations. 
+To summarize, search.py runs 10 instances of the Parallel Hillclimber. Each PHC has a specific number of hillclimbers that evolve based on the hillclimber algorithm. This algorithm generates a child and compares its fitness with the parent, replacing the parent if a beneficial mutation occurred. The map class controls the body of each individual hillclimber, and the mutations. 
 
 Also, here is an illustration of how a brain might work. Every sensor neuron is connected with some activation to every motor neuron with no hidden layers of any kind. 
 
