@@ -15,7 +15,7 @@ After the Ludobots development, I developed a method to generate non-overlapping
 
 To actually run my code, download the repo and run search.py with the constants that you desire. Note that any one of my experiments can be recreated by choosing the correct constants that align with the titles of the graphs in the results section. (The seed must be the same as well.)
 
-<h1 align="right"><b>Hypothesis</b></h1>
+<h2 align="left"><b>Hypothesis</b></h1>
 My hypothesis for this experiment was that adding or removing blocks as a mutation for each generation is a more effective form of evolution than generating a new brain randomly, resulting in fitter creatures. In this case, fitness was defined as the ability to walk quickly, mainly into the screen and away from the user to the left.
 
 This hypothesis is general and speculates that a mutation such as adding or removing links will be beneficial to the creature over time, using the hillclimber algorithm. This algorithm simply replaces the parent with a child if the child outperforms the parent.
