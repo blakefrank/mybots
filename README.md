@@ -56,4 +56,4 @@ Experimental group #2 with removing links favored at (80%):
 
 ![remove](https://user-images.githubusercontent.com/86979153/224905436-87450e79-6864-4823-9dcd-82446d16bfc5.png)
 
-Each group ran 17,000 simulations for a total of 50,000 simulations. 
+Each group ran 17,000 simulations for a total of 50,000 simulations. Each group took approximately 2 hours to run, and failed attempts added many extra frustrating hours. Random "1 in a million" errors occured occasionally. (Errors that occur randomly at a random point in the 2 hour run time and force me to re-run it from scratch. But alas, we got to 51,000!
