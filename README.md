@@ -28,6 +28,11 @@ Furthermore, after the creation of each PHC, every member of the population is i
 
 To summarize, search.py runs five instances of the Parallel Hillclimber. Each PHC has a specific number of hillclimbers that evolve based on the hillclimber algorithm. This algorithm generates a child and compares its fitness with the parent, replacing the parent if a beneficial mutation occurred. The map class controls the body of each individual hillclimber, and the mutations. 
 
+Also, here is an illustration of how a brain might work. Every sensor neuron is connected with some activation to every motor neuron with no hidden layers of any kind. 
+
+![Note Mar 13, 2023-1](https://user-images.githubusercontent.com/86979153/224905255-8880d459-7c1f-41c1-b34c-b94e0d707282.jpg)
+
+
 <h1 align="center"><b>Methods</b></h1>
 
 I hypothesized that the Experimental groups with additive and subractive mutations would outperform the control group, consistently. Here is a diagram that illustrates the three different groups and the difference between them. 
@@ -35,9 +40,18 @@ I hypothesized that the Experimental groups with additive and subractive mutatio
 ![Note Mar 13, 2023](https://user-images.githubusercontent.com/86979153/224774918-bc7aedc4-20c9-4eb4-b881-c29bd05af554.jpg)
 <h1 align="center"><b>Graphs and Results</b></h1>
 
-How many sims am I trying to do? Well, we want approximately 17,000 simulations per group. This sould work out to 10 PHCs, with population size of 20 and 85 generations. 3 Runs of this gets 51,000 simulations. 20 * 85 * 10 * 3 = 51,000. 
+How many simulations am I trying to do? Well, we want approximately 17,000 simulations per group. This should work out to 10 PHCs, with population size of 20 and 85 generations. 3 Runs of this gets 51,000 simulations. 20 * 85 * 10 * 3 = 51,000. 
 
 Starting with the control group: 
 
 ![control](https://user-images.githubusercontent.com/86979153/224901843-d7479887-3ac6-4109-833c-9b9716e9d900.png)
 
+This group's only mutation is re-randomizing the brain and sensor neurons every time. 
+
+Experimental group #1 with adding links favored at (80%): 
+
+![addingfavored](https://user-images.githubusercontent.com/86979153/224905349-588b265c-3f97-44c0-af90-60450ea416c4.png)
+
+Experimental group #2 with removing links favored at (80%): 
+
+![remove](https://user-images.githubusercontent.com/86979153/224905436-87450e79-6864-4823-9dcd-82446d16bfc5.png)
