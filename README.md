@@ -6,6 +6,8 @@ After the Ludobots development, I developed a method to generate non-overlapping
 
 My hypothesis for this experiment was that adding or removing blocks as a mutation for each generation is a more effective form of evolution than generating a new brain randomly, resulting in fitter creatures. In this case, fitness was defined as the ability to walk quickly, mainly into the screen and away from the user to the left.
 
+This hypothesis is general and speculates that a mutation such as adding or removing links will be beneficial to the creature over time, using the hillclimber algorithm. This algorithm simply replaces the parent with a child if the child outperforms the parent.
+
 To test this, the control group comprised a simulation of robots that generated a random brain for each successive generation, evolving based on the hillclimber algorithm.
 
 The experimental groups consisted of two separate groups, one with an 80% chance of adding a new link after each generation and the other with a 20% chance. Regardless, a link would be added or removed after each generation, and these probabilities were controlled. Diagrams were provided to demonstrate the different processes in this experiment.
@@ -56,4 +58,7 @@ Experimental group #2 with removing links favored at (80%):
 
 ![remove](https://user-images.githubusercontent.com/86979153/224905436-87450e79-6864-4823-9dcd-82446d16bfc5.png)
 
-Each group ran 17,000 simulations for a total of 50,000 simulations. Each group took approximately 2 hours to run, and failed attempts added many extra frustrating hours. Random "1 in a million" errors occured occasionally. (Errors that occur randomly at a random point in the 2 hour run time and force me to re-run it from scratch. But alas, we got to 51,000!
+Each group ran 17,000 simulations for a total of 50,000 simulations. Each group took approximately 2 hours to run, and failed attempts added many extra frustrating hours. Random "1 in a million" errors occured occasionally. (Errors that occur randomly at a random point in the 2 hour run time and force me to re-run it from scratch.) But alas, we got to 51,000!
+
+<h1 align="center"><b>Discussion</b></h1>
+
