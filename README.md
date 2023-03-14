@@ -26,7 +26,9 @@ The experimental groups consisted of two separate groups, one with an 80% chance
 
 Starting with the search.py file, the evolution of ten parallel hill climbers occurred successively.
 
-Here is a higher up overview of what is going on
+Here is a higher up overview of what is going on:
+
+Random seed = 3
 
 ![Assignment 8 -1](https://user-images.githubusercontent.com/86979153/224610453-9d058c7b-adb7-4313-bef5-b6658bb6a9d5.jpg)
 
