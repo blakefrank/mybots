@@ -58,6 +58,8 @@ I hypothesized that the experimental groups with additive and subractive mutatio
 
 How many simulations am I trying to do? Well, we want approximately 17,000 simulations per group. This should work out to 10 PHCs, with population size of 20 and 85 generations. 3 Runs of this gets 51,000 simulations. 20 * 85 * 10 * 3 = 51,000. 
 
+These graphs show the best robot from each generation of each parallel hillclimber with a population size of 20. (Each data point, thus, represents the best of 20 robots). 
+
 Starting with the control group: 
 
 ![control](https://user-images.githubusercontent.com/86979153/224901843-d7479887-3ac6-4109-833c-9b9716e9d900.png)
