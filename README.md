@@ -1,6 +1,8 @@
 <h1 align="center"><b>Videos</b></h1>
 
-[2 min video](https://youtu.be/xcZ4Imb1-G8)
+[2 min video](https://youtu.be/xcZ4Imb1-G8) (with gif to start)
+
+[gif link](https://youtu.be/2evE9xwf4lY)
 
 
 <h1 align="center"><b>Introduction</b></h1>
