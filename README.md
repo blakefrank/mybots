@@ -38,5 +38,6 @@ I hypothesized that the Experimental groups with additive and subractive mutatio
 How many sims am I trying to do? Well, we want approximately 17,000 simulations per group. This sould work out to 10 PHCs, with population size of 20 and 85 generations. 3 Runs of this gets 51,000 simulations. 20 * 85 * 10 * 3 = 51,000. 
 
 Starting with the control group: 
+
 ![control](https://user-images.githubusercontent.com/86979153/224901843-d7479887-3ac6-4109-833c-9b9716e9d900.png)
 
