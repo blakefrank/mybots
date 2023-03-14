@@ -9,7 +9,7 @@
 
 <h1 align="center"><b>Introduction</b></h1>
 
-This is my final project based on the Ludobots subreddit, where I conducted an evolutionary experiment using the hillclimber algorithm developed on r/ludobots and the parallel hillclimber.
+This is my final project based on the Ludobots subreddit, where I conducted an evolutionary experiment using the hillclimber and the parallel hillclimber algorithm developed on [r/ludobots](https://www.reddit.com/r/ludobots/).
 
 After the Ludobots development, I developed a method to generate non-overlapping random bodies using the map class. You can observe this process by downloading the repository and running map.py to produce a pyrosim or pybullet compatible body map to initiate evolution. Additionally, I created two algorithms to add and remove blocks in a pybullet-compatible way, ensuring that these bodies remain compatible after a mutation. The development of this process was complex.
 
