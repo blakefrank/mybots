@@ -55,3 +55,5 @@ Experimental group #1 with adding links favored at (80%):
 Experimental group #2 with removing links favored at (80%): 
 
 ![remove](https://user-images.githubusercontent.com/86979153/224905436-87450e79-6864-4823-9dcd-82446d16bfc5.png)
+
+Each group ran 17,000 simulations for a total of 50,000 simulations. 
