@@ -84,6 +84,8 @@ The study suggests that complicated mutations and bodies are not always better. 
 
 I did not have time to dive deeper into the individual evolutions of each PHC, as there are hundreds of them, and I cannot at the moment modify my code with little effort to capture all of the simulations. This would take a serious pickling operation on the earlier generations which would require me to re-code entire chunks of the project. I already spent an entire day monitoring my computer and trying to finish the 51000 simulations. If I had more time, I would definitely add more capabilities to my code, such that I could save and analyze the earlier generations and actually visualize individual mutations that were beneficial.
 
+The mystery lies in which type of body is actually better for moving, a smaller body or a larger one with more links. The graphs certainly suggest that the larger bodies that continuously add blocks are consistently improving, while the smaller bodies evolve more erratically. 
+
 At first glance, however, the charts are very descriptive of the evolutionary process for each mutation and even the control group. Adding blocks resulted in faster and slightly beneficial mutations. Removing blocks resulted in rarer but hugely beneficial mutations. 
 
 <h1 align="center"><b>Conclusion</b></h1>
