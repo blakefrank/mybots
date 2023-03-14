@@ -12,7 +12,7 @@ np.random.seed(c.randomSeed)
 random.seed(c.randomSeed)
 max_fitness_value = -np.inf # initialize to negative infinity
 max_fitness_phc = None # initialize to None
-arr = np.zeros((c.numberOfGenerations, 5))
+arr = np.zeros((c.numberOfGenerations, c.number_of_phcs))
 for i in range(c.number_of_phcs):
     phc = PARALLEL_HILL_CLIMBER(i)
     phc.evolve()
@@ -41,7 +41,7 @@ for dir_name in os.listdir('.'):
         shutil.rmtree(dir_name)
 
 # Set the title and axis labels
-plt.title(f'Average Fitness over PHC Generations (Population Size: {c.populationSize}, \nGenerations: {c.numberOfGenerations}, PHCs: {c.number_of_phcs}, Random Seed: {c.randomSeed}), P(remove) = {c.probtoremove})')
+plt.title(f'Max Fitness over PHC Generations (Population Size: {c.populationSize}, \nGenerations: {c.numberOfGenerations}, PHCs: {c.number_of_phcs}, Random Seed: {c.randomSeed}), P(remove) = {c.probtoremove})')
 plt.xlabel('Generation')
 plt.ylabel('Fitness')
 

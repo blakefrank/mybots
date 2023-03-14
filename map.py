@@ -264,6 +264,7 @@ if __name__ == '__main__':
     print("-------------------------joints----------------------------")
     for joint in map.list_joints:
         print("{:<15}Abs pos: {:<25}Rel pos: {:<25}face: {}".format(joint.name, str(joint.abs), str(joint.rel), str(joint.face)))
+    print("\n\n REMOVE A LINK AND JOINT \n\n")
     map.remove_edge_block()
     print("\n-------------------------links----------------------------")
     for link in map.list_links:
@@ -272,6 +273,9 @@ if __name__ == '__main__':
     for joint in map.list_joints:
         print("{:<15}Abs pos: {:<25}Rel pos: {:<25}face: {}".format(joint.name, str(joint.abs), str(joint.rel), str(joint.face)))
     map.fix()
+
+    print("\n\n FIX THE NUMBERS \n\n")
+
     print("\n-------------------------links----------------------------")
     for link in map.list_links:
         print("{:<15}Abs pos: {:<25}Rel pos: {}".format(link.name, str(link.abs), str(link.rel)))

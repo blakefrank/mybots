@@ -3,11 +3,11 @@ import numpy as np
 amplitude = np.pi/4
 frequency = 1
 phaseOffset = np.pi/4
-number_of_phcs = 5
-numberOfGenerations = 2
-populationSize = 2
-probtoremove = 0.5
-simulation_length = 1000
+number_of_phcs = 10
+numberOfGenerations = 85
+populationSize = 20
+probtoremove = 0.8
+simulation_length = 3000
 # numSensorNeurons = 11
 # numMotorNeurons = 10
 

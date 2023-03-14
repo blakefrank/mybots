@@ -42,6 +42,7 @@ class PARALLEL_HILL_CLIMBER:
 		self.Print()
 		self.Select()
 
+
 	def Spawn(self):
 		self.children = dict()
 		for key in self.parents:

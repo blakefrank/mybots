@@ -14,7 +14,10 @@ class SOLUTION:
 		self.populationID = populationID
 		self.numLinks = numlinks
 		self.map = map_in
-		self.sensorLocs = np.random.randint(2, size=self.numLinks)
+		while True:
+			self.sensorLocs = np.random.randint(2, size=self.numLinks)
+			if np.count_nonzero(self.sensorLocs) > 1:
+				break
 		self.Create_Body()
 		self.weights_initialized = False
 		
@@ -136,21 +139,38 @@ class SOLUTION:
 		self.weights[randomRow, randomColumn] = random.random() * 2 - 1
 		random_number = random.random()
 		if random_number < c.probtoremove:
-			self.map.remove_edge_block()
-			self.map.fix()
-			self.sensorLocs = np.random.randint(2, size=len(self.map.list_links))
-			# print("--------Link Removed----------")
-			# print("--------SensorLocs----------")
-			# print(self.sensorLocs)
-			# print("--------Numlinks----------")
-			# print(len(self.map.list_links))
-			self.Create_Body()
+			if len(self.map.list_links) > 3:
+				# pass
+				self.map.remove_edge_block()
+				self.map.fix()
+				while True:
+					self.sensorLocs = np.random.randint(2, size=len(self.map.list_links))
+					if np.count_nonzero(self.sensorLocs) > 1:
+						break
+
+
+				# print("--------Link Removed----------")
+				# print("--------SensorLocs----------")
+				# print(self.sensorLocs)
+				# print("--------Numlinks----------")
+				# print(len(self.map.list_links))
+				self.Create_Body()
+			else:
+				pass
 		else:
+			# pass
 			while self.map.find_new_joint_and_link() != False:
 				pass
 			self.map.incr()
 			# self.numLinks +=1
-			self.sensorLocs = np.random.randint(2, size=len(self.map.list_links))
+			while True:
+				self.sensorLocs = np.random.randint(2, size=len(self.map.list_links))
+				if np.count_nonzero(self.sensorLocs) > 1:
+					break
+
+
+
+
 			# print("--------Link Added----------")
 			# print("--------SensorLocs----------")
 			# print(self.sensorLocs)
