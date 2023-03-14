@@ -50,7 +50,7 @@ Finally, I do not want to go down the rabbit hole of trying to explain exactly h
 
 <h1 align="center"><b>Methods</b></h1>
 
-I hypothesized that the Experimental groups with additive and subractive mutations would outperform the control group, consistently. Here is a diagram that illustrates the three different groups and the difference between them. 
+I hypothesized that the experimental groups with additive and subractive mutations would outperform the control group, consistently. Here is a diagram that illustrates the three different groups and the difference between them. 
 
 ![Page1-2](https://user-images.githubusercontent.com/86979153/224908981-e1233245-f209-491f-8254-5d490b148cf4.jpg)
 <h1 align="center"><b>Graphs and Results</b></h1>
