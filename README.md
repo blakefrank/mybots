@@ -15,6 +15,7 @@ After the Ludobots development, I developed a method to generate non-overlapping
 
 To actually run my code, download the repo and run search.py with the constants that you desire. Note that any one of my experiments can be recreated by choosing the correct constants that align with the titles of the graphs in the results section. (The seed must be the same as well.)
 
+<h1 align="right"><b>Hypothesis</b></h1>
 My hypothesis for this experiment was that adding or removing blocks as a mutation for each generation is a more effective form of evolution than generating a new brain randomly, resulting in fitter creatures. In this case, fitness was defined as the ability to walk quickly, mainly into the screen and away from the user to the left.
 
 This hypothesis is general and speculates that a mutation such as adding or removing links will be beneficial to the creature over time, using the hillclimber algorithm. This algorithm simply replaces the parent with a child if the child outperforms the parent.
@@ -79,7 +80,7 @@ Experimental group #2, which had an 80% chance of removing a link after each gen
 
 The study suggests that complicated mutations and bodies are not always better. The final robot from experimental group #2 simply moved across the screen with a snake-like gallop using only 3 blocks, each containing a sensor neuron. It is remarkable that despite the complexity of the work and algorithms involved, the final robot was able to achieve its impressive performance with such a simple structure.
 
-I did not have time to dive deeper into the individual evolutions of each PHC, as there are hundreds of them, and I cannot at the moment modify my code with little effort to capture all of the simulations. This would take a serious pickling operation which I do not have time for. I already spent an entire day monitoring my computer and trying to finish the 51000 simulations.
+I did not have time to dive deeper into the individual evolutions of each PHC, as there are hundreds of them, and I cannot at the moment modify my code with little effort to capture all of the simulations. This would take a serious pickling operation on the earlier generations which would require me to re-code entire chunks of the project. I already spent an entire day monitoring my computer and trying to finish the 51000 simulations. If I had more time, I would definitely add more capabilities to my code, such that I could save and analyze the earlier generations and actually visualize individual mutations that were beneficial.
 
 At first glance, however, the charts are very descriptive of the evolutionary process for each mutation and even the control group. Adding blocks resulted in faster and slightly beneficial mutations. Removing blocks resulted in rarer but hugely beneficial mutations. 
 
