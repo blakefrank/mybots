@@ -2,7 +2,7 @@
 
 [2 min video](https://youtu.be/xcZ4Imb1-G8) (with gif to start)
 
-[gif link](https://youtu.be/2evE9xwf4lY)
+[gif link](https://imgur.com/8SAZxBe)
 
 **Quick note:** I attempted the scientific option, and I managed to acheive 51,000 simulations as well as test my hypothesis. This took an incredible amount of time, and I hope that my grade reflects the huge amount of effort I put into this project. I hope you enjoy and appreciate the video and the experiment I did, and I also hope that my grade would return to an A as it was before assignment 7 and 8. Thank you!
 
