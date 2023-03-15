@@ -2,7 +2,7 @@
 
 [2 min video](https://youtu.be/cCtkKFuCfnA) (with gif to start)
 
-[gif link](https://imgur.com/8SAZxBe)
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/8SAZxBe"  ><a href="//imgur.com/a/8SAZxBe">51000 simulation experiment</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 **Quick note:** I attempted the scientific option, and I managed to acheive 51,000 simulations as well as test my hypothesis. This took an incredible amount of time, and I hope that my grade reflects the huge amount of effort I put into this project. I also hope you enjoy and appreciate the video and the experiment I did. Thank you!
 
